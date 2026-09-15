@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Barcelona walk</name>
+    <Style id="line"><LineStyle><color>ff00a5ff</color><width>5</width></LineStyle></Style>
+    <Placemark><name>Sagrada Família</name><description>Basílica de la Sagrada Família</description><Point><coordinates>2.1744,41.4036,0</coordinates></Point></Placemark>
+    <Placemark><name>Park Güell</name><description>Gaudí's park</description><Point><coordinates>2.1527,41.4145,0</coordinates></Point></Placemark>
+    <Placemark><name>Casa Batlló</name><description>Passeig de Gràcia</description><Point><coordinates>2.1650,41.3917,0</coordinates></Point></Placemark>
+    <Placemark><name>La Barceloneta</name><description>Beach</description><Point><coordinates>2.1894,41.3784,0</coordinates></Point></Placemark>
+    <Placemark>
+      <name>Walking route</name>
+      <styleUrl>#line</styleUrl>
+      <LineString><tessellate>1</tessellate><coordinates>2.1894,41.3784,0 2.1650,41.3917,0 2.1744,41.4036,0 2.1527,41.4145,0</coordinates></LineString>
+    </Placemark>
+  </Document>
+</kml>

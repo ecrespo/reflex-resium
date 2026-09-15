@@ -1,0 +1,185 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mount Etna",
+    "country": "Italy",
+    "elevation_m": 3357
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.9934,
+     37.751
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mount Vesuvius",
+    "country": "Italy",
+    "elevation_m": 1281
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.426,
+     40.821
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mount Fuji",
+    "country": "Japan",
+    "elevation_m": 3776
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     138.7274,
+     35.3606
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Kilauea",
+    "country": "USA",
+    "elevation_m": 1247
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -155.2867,
+     19.4069
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Popocatépetl",
+    "country": "Mexico",
+    "elevation_m": 5426
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -98.628,
+     19.023
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Villarrica",
+    "country": "Chile",
+    "elevation_m": 2847
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.939,
+     -39.42
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Cotopaxi",
+    "country": "Ecuador",
+    "elevation_m": 5897
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.438,
+     -0.68
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Teide",
+    "country": "Spain",
+    "elevation_m": 3715
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.642,
+     28.272
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mount St. Helens",
+    "country": "USA",
+    "elevation_m": 2549
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.1944,
+     46.1912
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Krakatoa",
+    "country": "Indonesia",
+    "elevation_m": 813
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     105.423,
+     -6.102
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Eyjafjallajökull",
+    "country": "Iceland",
+    "elevation_m": 1651
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -19.613,
+     63.63
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mount Kilimanjaro",
+    "country": "Tanzania",
+    "elevation_m": 5895
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.3556,
+     -3.0674
+    ]
+   }
+  }
+ ]
+}

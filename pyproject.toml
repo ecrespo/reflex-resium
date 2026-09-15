@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reflex-resium"
+dynamic = ["version"]
+description = "Resium (React components for Cesium) for Reflex: 3D globes, maps, entities, 3D Tiles and more in pure Python"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Ernesto Crespo", email = "ecrespo@gmail.com" }]
+keywords = ["reflex", "reflex-custom-components", "resium", "cesium", "3d", "gis", "globe", "maps"]
+
+dependencies = ["reflex>=0.9.11"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Framework :: Reflex",
+]
+
+[project.urls]
+Homepage = "https://github.com/ecrespo/reflex-resium"
+Source = "https://github.com/ecrespo/reflex-resium"
+Issues = "https://github.com/ecrespo/reflex-resium/issues"
+
+[project.optional-dependencies]
+dev = ["build", "twine", "pytest>=8", "ruff==0.15.11"]
+
+[tool.setuptools.dynamic]
+version = { attr = "reflex_resium.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["custom_components"]
+
+# --------------------------------------------------------------------------
+# Quality tooling
+# --------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["*.pyi", ".web"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "BLE", "A002"]
+ignore = [
+    "E501",   # Line length is enforced by `ruff format`; embedded JS templates are kept verbatim.
+    "RUF012", # Reflex components declare mutable class attributes by design (lib_dependencies...).
+    "UP031",  # JS templates with many braces are clearer with %-formatting.
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Generated file: keep it byte-identical to scripts/generate_components.py output.
+"custom_components/reflex_resium/components.py" = ["RUF022", "RUF100"]
+"tests/**" = ["S101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["reflex_resium", "resium_demo"]
+
+[tool.ruff.format]
+# Generated file: keep it byte-identical to scripts/generate_components.py output.
+exclude = ["custom_components/reflex_resium/components.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", ".web"]
