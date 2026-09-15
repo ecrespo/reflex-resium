@@ -1,12 +1,20 @@
 version: 2
 updates:
+  # Also bumps the commit SHAs of pinned actions (and their `# vX.Y.Z` comments).
   - package-ecosystem: github-actions
     directory: /
     target-branch: develop
     schedule:
       interval: weekly
-  - package-ecosystem: pip
+    groups:
+      actions:
+        patterns: ["*"]
+  # pyproject.toml + uv.lock (runtime dependency and the `dev` group tools).
+  - package-ecosystem: uv
     directory: /
     target-branch: develop
     schedule:
       interval: weekly
+    groups:
+      dev-tools:
+        dependency-type: development

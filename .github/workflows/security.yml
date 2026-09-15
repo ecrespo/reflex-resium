@@ -16,15 +16,18 @@ concurrency:
   group: security-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Actions are pinned to commit SHAs (tags are mutable); Dependabot keeps them updated.
+# Scanners (bandit, pip-audit) run at their latest release on purpose.
+
 jobs:
   bandit:
     name: Bandit (SAST)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: astral-sh/setup-uv@v10.1.0
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
       - name: Bandit
         run: uvx bandit -c pyproject.toml -r custom_components scripts resium_demo
 
@@ -32,17 +35,14 @@ jobs:
     name: pip-audit (dependency CVEs)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.13"
-      - uses: astral-sh/setup-uv@v10.1.0
-      - name: Resolve runtime dependencies
-        run: uv pip compile pyproject.toml -o requirements-audit.txt
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      - name: Export locked dependencies (with hashes)
+        run: uv export --locked --all-groups --no-emit-project --format requirements-txt -o requirements-audit.txt
       - name: Audit
-        run: uvx pip-audit -r requirements-audit.txt --no-deps --disable-pip --progress-spinner off
+        run: uvx pip-audit -r requirements-audit.txt --require-hashes --disable-pip --progress-spinner off
 
   gitleaks:
     name: Gitleaks (secrets)
@@ -51,11 +51,11 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: gitleaks/gitleaks-action@v3
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -64,10 +64,10 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/dependency-review-action@v5
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
         with:
           fail-on-severity: high
 
@@ -83,13 +83,13 @@ jobs:
       matrix:
         language: [python, actions]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: github/codeql-action/init@v4
+      - uses: github/codeql-action/init@b96794f015dfd88f77b49b1c93e0fa7110f94c63 # v4.38.0
         with:
           languages: ${{ matrix.language }}
           queries: security-and-quality
-      - uses: github/codeql-action/analyze@v4
+      - uses: github/codeql-action/analyze@b96794f015dfd88f77b49b1c93e0fa7110f94c63 # v4.38.0
         with:
           category: /language:${{ matrix.language }}

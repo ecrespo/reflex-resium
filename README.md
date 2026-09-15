@@ -86,7 +86,7 @@ C.Color.fromCssColorString("#22d3ee").withAlpha(0.5)
 C.HeightReference.CLAMP_TO_GROUND
 C.OpenStreetMapImageryProvider.new(url="https://tile.openstreetmap.org/")  # new X({url})
 C.Material.fromType("Checkerboard", {"repeat": rs.cartesian2(20, 10)})
-rs.js("Array.from({length: 8}, (_, i) => i)")                              # raw JS escape hatch
+rs.js("Array.from({length: 8}, (_, i) => i)")  # raw JS escape hatch
 ```
 
 Keyword arguments become a camelCase options object. Helpers: `cartesian3`, `cartesian3_array`, `cartesian3_array_heights`, `cartesian2`, `color`, `rectangle_from_degrees`, `heading_pitch_roll`, `heading_pitch_range`, `camera_orientation`, `near_far_scalar`, `distance_display_condition`, `bounding_sphere`, `julian_date`, `time_interval_collection`, `ion_resource`, `natural_earth_imagery_layer`, `osm_imagery_layer`, `url_template_imagery_layer`, `ion_imagery_layer`, `world_terrain`, `ellipsoid_terrain`.
@@ -102,9 +102,10 @@ class State(rx.State):
         # movement = {"position": {"x", "y"}, ...}; target = {"id", "name", "kind", "properties"}
         ...
 
+
 rs.entity(..., on_click=State.clicked)
 rs.geo_json_data_source(data="/data.geojson", on_load=State.loaded)  # {"name", "entity_count", ...}
-rs.clock(on_tick=State.tick.throttle(1000))                          # throttle high-frequency events
+rs.clock(on_tick=State.tick.throttle(1000))  # throttle high-frequency events
 ```
 
 ### Geographic events and imperative camera control
@@ -114,9 +115,9 @@ rs.viewer(
     ...,
     rs.cesium_events(
         viewer_id="main",
-        on_left_click=State.on_click,        # {"longitude", "latitude", "height", "screen", "picked"}
-        on_mouse_move=State.on_move,         # throttled (mouse_move_throttle=100 ms)
-        on_camera_change=State.on_camera,    # {"longitude", "latitude", "height", "heading", "pitch", "roll"}
+        on_left_click=State.on_click,  # {"longitude", "latitude", "height", "screen", "picked"}
+        on_mouse_move=State.on_move,  # throttled (mouse_move_throttle=100 ms)
+        on_camera_change=State.on_camera,  # {"longitude", "latitude", "height", "heading", "pitch", "roll"}
         on_selected_entity_change=State.on_select,
     ),
 )
@@ -168,14 +169,14 @@ python scripts/generate_components.py props.json path/to/resium/src
 ## Development
 
 ```bash
-uv venv && uv pip install -e ".[dev]"
-ruff check . && ruff format --check .   # lint + format
-pytest                                   # tests
+uv sync                                          # project + locked dev tools (uv.lock)
+uv run ruff check . && uv run ruff format --check .  # lint + format
+uv run pytest                                    # tests
 ```
 
 CI runs on every push/PR to `develop` and `main`:
 
-- **Quality** (`.github/workflows/quality.yml`): Ruff, pytest on Python 3.10–3.13, `uv build` + `twine check` + wheel smoke test, demo compilation.
+- **Quality** (`.github/workflows/quality.yml`): Ruff (version locked in `uv.lock`), pytest on Python 3.10–3.13, `uv build` + `twine check` + wheel smoke test, demo compilation.
 - **Security** (`.github/workflows/security.yml`): Bandit, pip-audit, Gitleaks, dependency review and CodeQL (also weekly).
 
 ### Releasing
