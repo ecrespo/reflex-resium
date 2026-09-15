@@ -32,7 +32,7 @@ Source = "https://github.com/ecrespo/reflex-resium"
 Issues = "https://github.com/ecrespo/reflex-resium/issues"
 
 [project.optional-dependencies]
-dev = ["build", "twine", "pytest>=8", "ruff>=0.15"]
+dev = ["build", "twine", "pytest>=8", "ruff==0.15.11"]
 
 [tool.setuptools.dynamic]
 version = { attr = "reflex_resium.__version__" }
