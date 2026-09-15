@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Reflex
+.web/
+assets/external/
+reflex.lock/
+.states/
+
+# IDE
+.idea/
+
+# CI scratch
+requirements-audit.txt
