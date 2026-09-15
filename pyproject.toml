@@ -23,7 +23,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: GIS",
-    "Framework :: Reflex",
 ]
 
 [project.urls]
@@ -33,7 +32,7 @@ Issues = "https://github.com/ecrespo/reflex-resium/issues"
 
 [dependency-groups]
 # Development tooling, locked in uv.lock (CI runs these exact versions via `uv run --locked`).
-dev = ["twine>=6", "pytest>=8", "ruff==0.16.7"]
+dev = ["twine>=6", "pytest>=8", "ruff==0.16.7", "trove-classifiers"]
 
 [tool.setuptools.dynamic]
 version = { attr = "reflex_resium.__version__" }

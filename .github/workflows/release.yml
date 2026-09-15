@@ -44,6 +44,8 @@ jobs:
         run: uv build
       - name: Check metadata
         run: uv run --locked --only-group dev twine check --strict dist/*
+      - name: Check classifiers (PyPI rejects unknown ones at upload)
+        run: uv run --locked --only-group dev python scripts/check_classifiers.py
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: dist
