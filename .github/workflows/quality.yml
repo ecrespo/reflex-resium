@@ -68,6 +68,8 @@ jobs:
         run: uv build
       - name: Check metadata
         run: uv run --locked --only-group dev twine check --strict dist/*
+      - name: Check classifiers (PyPI rejects unknown ones at upload)
+        run: uv run --locked --only-group dev python scripts/check_classifiers.py
       - name: Smoke-test the wheel
         run: |
           uv venv /tmp/wheel-env
