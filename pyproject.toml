@@ -31,8 +31,9 @@ Homepage = "https://github.com/ecrespo/reflex-resium"
 Source = "https://github.com/ecrespo/reflex-resium"
 Issues = "https://github.com/ecrespo/reflex-resium/issues"
 
-[project.optional-dependencies]
-dev = ["build", "twine", "pytest>=8", "ruff==0.15.11"]
+[dependency-groups]
+# Development tooling, locked in uv.lock (CI runs these exact versions via `uv run --locked`).
+dev = ["twine>=6", "pytest>=8", "ruff==0.16.7"]
 
 [tool.setuptools.dynamic]
 version = { attr = "reflex_resium.__version__" }
