@@ -58,7 +58,7 @@ resolution-markers = [
     "python_full_version >= '3.11'",
 ]
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version == '3.11.*'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/f2/8d2dd8276ca05e1f5157b6a0d34efb2f585f47a0fbed61e8aad04b221f0b/bidict-0.24.1.tar.gz", hash = "sha256:4dca6c17f0b01700e9f24359daa5ebabf7be022d99f4cb2a257b6af2a5076c88", size = 30818, upload-time = "2026-08-25T23:45:52.214Z" }
 wheels = [
@@ -367,7 +367,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -833,7 +833,7 @@ wheels = [
 
 [[package]]
 name = "reflex"
-version = "0.9.11.post1"
+version = "0.9.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -863,14 +863,14 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9b/73/2c98006c512d2216e09b874abd7a8357016ff12588f7a265af7af6e49b70/reflex-0.9.11.post1.tar.gz", hash = "sha256:12c1008566591d773b6e0ae0ba3c362d75594db84d7b5f232411040e27079da8", size = 246747, upload-time = "2026-09-15T19:50:32.799Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c1/3f/ff57a6892ef382ddd2ed94d41743e30f0dae164916f5ddcfb89bbaf2f318/reflex-0.9.13.tar.gz", hash = "sha256:7c84e846434f578d667ceba049cdb94a8b91996ab4e2f119b29e48bd5a6a5111", size = 261572, upload-time = "2026-10-09T01:14:05.263Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bd/e6/33cab280ca28471a0bff92f1c06ab69a9d5c475ac1d5b62e7d7aa10ff849/reflex-0.9.11.post1-py3-none-any.whl", hash = "sha256:9486d368e0ef837997bdf725fb1a32d5e49de9bca45c8d7df13e1be722ed7dd1", size = 290998, upload-time = "2026-09-15T19:50:31.085Z" },
+    { url = "https://files.pythonhosted.org/packages/26/04/ae64e8122ea873e8d6cfac282e1c91712e973651e3e4b38de733ee8ce56d/reflex-0.9.13-py3-none-any.whl", hash = "sha256:0f35f88290d8451558885e6f83ca05211147870f11b20cac1c760773d1200301", size = 305639, upload-time = "2026-10-09T01:14:03.785Z" },
 ]
 
 [[package]]
 name = "reflex-base"
-version = "0.9.11.post1"
+version = "0.9.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "packaging" },
@@ -878,9 +878,9 @@ dependencies = [
     { name = "rich" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f6/ce/6a65d5c7009e570bde06cb1808d3055020192a55c894526541af8b5a616d/reflex_base-0.9.11.post1.tar.gz", hash = "sha256:d646a551d8e818e8edb624225ca756b89b61d6277e46c5097c3fdf72efc76a98", size = 328870, upload-time = "2026-09-15T19:47:55.043Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ba/d1/28f1718effc9baf84df9a43e945b4772718a968a41d6d5fc564f86c60424/reflex_base-0.9.13.tar.gz", hash = "sha256:7a0c1389ec104b1ba414c2eba1cf84d902a78db8f270b3128c5235e4182f711d", size = 352771, upload-time = "2026-10-09T01:01:29.297Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e4/80/53c94f211a71b3111f30fa436bb297bb05906ffdd7a0b8920881a5fa0715/reflex_base-0.9.11.post1-py3-none-any.whl", hash = "sha256:0a7773e9d713b21bb6aeeee046c1ea2b4658f95a3469bbb58468b143a141b5e1", size = 364325, upload-time = "2026-09-15T19:47:53.738Z" },
+    { url = "https://files.pythonhosted.org/packages/17/ea/ebe9749a90d734bd59f67f4de526cec24f359bd1520ce05e5b9555aab60a/reflex_base-0.9.13-py3-none-any.whl", hash = "sha256:b4cb9d5bc0460753876544667e1473ee0549ddd9ce61c655c942070e05197141", size = 386598, upload-time = "2026-10-09T01:01:27.837Z" },
 ]
 
 [[package]]
