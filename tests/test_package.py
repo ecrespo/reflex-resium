@@ -44,3 +44,13 @@ def test_imperative_helpers_return_event_specs(spec):
 
 def test_morph_to_upper_cases_mode():
     assert '"2D"' in str(rs.morph_to("globe", "2d").args[0][1])
+
+
+@pytest.mark.parametrize("component", [rs.Viewer, rs.Entity])
+def test_cesium_subpackages_are_pinned(component):
+    # cesium only declares caret ranges for @cesium/engine and @cesium/widgets;
+    # unpinned, a fresh install can pick a minor that breaks cesium's re-exports.
+    deps = component.lib_dependencies
+    assert f"cesium@{rs.constants.CESIUM_VERSION}" in deps
+    assert f"@cesium/engine@{rs.constants.CESIUM_ENGINE_VERSION}" in deps
+    assert f"@cesium/widgets@{rs.constants.CESIUM_WIDGETS_VERSION}" in deps

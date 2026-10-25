@@ -16,6 +16,10 @@ concurrency:
   group: security-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # Run every JavaScript action on the Node 24 runtime.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 # Actions are pinned to commit SHAs (tags are mutable); Dependabot keeps them updated.
 # Scanners (bandit, pip-audit) run at their latest release on purpose.
 
@@ -27,7 +31,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
       - name: Bandit
         run: uvx bandit -c pyproject.toml -r custom_components scripts resium_demo
 
@@ -38,7 +42,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
       - name: Export locked dependencies (with hashes)
         run: uv export --locked --all-groups --no-emit-project --format requirements-txt -o requirements-audit.txt
       - name: Audit

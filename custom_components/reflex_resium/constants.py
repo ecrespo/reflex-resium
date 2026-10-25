@@ -11,8 +11,21 @@ CESIUM_VERSION = "1.145.0"
 #: npm specifier for resium.
 RESIUM_LIBRARY = f"resium@{RESIUM_VERSION}"
 
+#: Versions of the ``@cesium/engine`` / ``@cesium/widgets`` packages that
+#: ``cesium@CESIUM_VERSION`` re-exports. cesium only declares caret ranges for
+#: them, and newer minors drop exports it still references, so they are pinned.
+CESIUM_ENGINE_VERSION = "26.3.0"
+CESIUM_WIDGETS_VERSION = "16.2.0"
+
 #: npm specifier for cesium.
 CESIUM_LIBRARY = f"cesium@{CESIUM_VERSION}"
+
+#: npm specifiers installed with every Cesium-backed component.
+CESIUM_LIBRARIES = [
+    CESIUM_LIBRARY,
+    f"@cesium/engine@{CESIUM_ENGINE_VERSION}",
+    f"@cesium/widgets@{CESIUM_WIDGETS_VERSION}",
+]
 
 #: Widgets stylesheet shipped inside the cesium npm package (Viewer UI).
 CESIUM_WIDGETS_CSS = "cesium/Build/Cesium/Widgets/widgets.css"

@@ -10,7 +10,7 @@ from reflex.utils.imports import ImportVar
 from reflex.vars.base import LiteralVar, Var
 
 from .cesium import CesiumExpr, cesium_import
-from .constants import CESIUM_LIBRARY, CESIUM_WIDGETS_CSS, RESIUM_LIBRARY
+from .constants import CESIUM_LIBRARIES, CESIUM_WIDGETS_CSS, RESIUM_LIBRARY
 from .plugin import get_cesium_base_url, get_ion_access_token
 
 __all__ = ["ResiumCameraOperation", "ResiumComponent", "resium_setup_code"]
@@ -48,7 +48,7 @@ class ResiumComponent(rx.Component):
 
     library = RESIUM_LIBRARY
 
-    lib_dependencies: list[str] = [CESIUM_LIBRARY]
+    lib_dependencies: list[str] = [*CESIUM_LIBRARIES]
 
     # Python names of "Cesium read-only props" (changing them re-creates the element).
     _resium_readonly_props: ClassVar[tuple[str, ...]] = ()
@@ -133,7 +133,7 @@ class ResiumCameraOperation(ResiumComponent):
 
     library = None  # type: ignore[assignment]
 
-    lib_dependencies: list[str] = [CESIUM_LIBRARY, RESIUM_LIBRARY]
+    lib_dependencies: list[str] = [*CESIUM_LIBRARIES, RESIUM_LIBRARY]
 
     # Name of the resium export wrapped by this component.
     _resium_source_tag: ClassVar[str] = ""

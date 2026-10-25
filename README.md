@@ -6,7 +6,7 @@
 
 [Resium](https://resium.reearth.io) (React components for 🌏 [Cesium](https://cesium.com)) wrapped for [Reflex](https://reflex.dev): build 3D globes and maps — entities, primitives, GeoJSON/KML/CZML, 3D Tiles, terrain, camera flights, post-processing — in pure Python.
 
-- **All 97 resium components** (resium 1.26.0 / cesium 1.145.0), generated from resium's TypeScript definitions with prop docs and types.
+- **All 97 resium components** (resium 1.26.0 / cesium 1.145.0, with `@cesium/engine` 26.3.0 and `@cesium/widgets` 16.2.0 pinned for reproducible frontend builds), generated from resium's TypeScript definitions with prop docs and types.
 - **`rs.Cesium` bridge**: build real Cesium objects (`Cartesian3`, `Color`, imagery providers, materials, enums…) from Python, including state vars and `rx.foreach` items.
 - **Automatic memoization** of Cesium objects so read-only props don't re-create elements on every render.
 - **JSON-safe events**: Cesium callbacks (`on_click`, `on_load`, `on_tick`, `on_ready`…) arrive in your state as dictionaries.
@@ -14,11 +14,19 @@
 - **Imperative helpers**: `fly_to`, `set_view`, `fly_home`, `zoom_to_entity`, `morph_to`, `set_clock`, `get_camera`, `screenshot`.
 - **`ResiumPlugin`**: serves Cesium's static assets locally in dev and copies them into production builds (without it, the jsDelivr CDN is used).
 
+## Requirements
+
+- Python 3.11+ (3.11, 3.12 and 3.13 are tested in CI)
+- [Reflex](https://reflex.dev) 0.10.0 or newer
+- Node.js 24 LTS for building the frontend (`reflex run` / `reflex export`)
+
 ## Installation
 
 ```bash
 pip install reflex-resium     # or: uv add reflex-resium
 ```
+
+`reflex-resium` 0.2.0 targets Reflex 0.10 and drops Python 3.10. Projects that still need Reflex 0.9.x or Python 3.10 should pin `reflex-resium==0.1.0`.
 
 ## Quick start
 
@@ -176,15 +184,17 @@ uv run pytest                                    # tests
 
 CI runs on every push/PR to `develop` and `main`:
 
-- **Quality** (`.github/workflows/quality.yml`): Ruff (version locked in `uv.lock`), pytest on Python 3.10–3.13, `uv build` + `twine check` + wheel smoke test, demo compilation.
+- **Quality** (`.github/workflows/quality.yml`): Ruff (version locked in `uv.lock`), pytest on Python 3.11–3.13, `uv build` + `twine check` + wheel smoke test, demo compilation on Node.js 24.
 - **Security** (`.github/workflows/security.yml`): Bandit, pip-audit, Gitleaks, dependency review and CodeQL (also weekly).
+
+All workflows pin actions by commit SHA and run JavaScript actions on the Node 24 runtime (`FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`).
 
 ### Releasing
 
 Bump `__version__` in `custom_components/reflex_resium/__init__.py`, merge to `main`, then tag it:
 
 ```bash
-git tag v0.1.0 && git push origin v0.1.0
+git tag v0.2.0 && git push origin v0.2.0
 ```
 
 `.github/workflows/release.yml` checks that the tag matches the version, tests and builds the package, publishes it to PyPI through Trusted Publishing (environment `pypi`) and creates the GitHub Release with the distributions attached.

@@ -62,7 +62,7 @@ from .components import __all__ as _components_all
 from .constants import CESIUM_VERSION, RESIUM_VERSION
 from .plugin import ResiumPlugin, get_cesium_base_url, get_ion_access_token
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     *_components_all,

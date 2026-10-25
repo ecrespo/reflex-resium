@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools>=78.1.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,16 +9,15 @@ description = "Resium (React components for Cesium) for Reflex: 3D globes, maps,
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{ name = "Ernesto Crespo", email = "ecrespo@gmail.com" }]
 keywords = ["reflex", "reflex-custom-components", "resium", "cesium", "3d", "gis", "globe", "maps"]
 
-dependencies = ["reflex>=0.9.11"]
+dependencies = ["reflex>=0.10.0"]
 
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -46,7 +45,7 @@ where = ["custom_components"]
 
 [tool.ruff]
 line-length = 120
-target-version = "py310"
+target-version = "py311"
 extend-exclude = ["*.pyi", ".web"]
 
 [tool.ruff.lint]
