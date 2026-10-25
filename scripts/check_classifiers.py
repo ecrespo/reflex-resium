@@ -8,9 +8,9 @@ Usage: ``uv run --locked --only-group dev python scripts/check_classifiers.py``
 from __future__ import annotations
 
 import sys
+import tomllib
 from pathlib import Path
 
-import tomllib
 from trove_classifiers import classifiers
 
 pyproject = tomllib.loads((Path(__file__).resolve().parents[1] / "pyproject.toml").read_text())
