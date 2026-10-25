@@ -6,7 +6,7 @@
 
 [Resium](https://resium.reearth.io) (React components for 🌏 [Cesium](https://cesium.com)) wrapped for [Reflex](https://reflex.dev): build 3D globes and maps — entities, primitives, GeoJSON/KML/CZML, 3D Tiles, terrain, camera flights, post-processing — in pure Python.
 
-- **All 97 resium components** (resium 1.26.0 / cesium 1.145.0), generated from resium's TypeScript definitions with prop docs and types.
+- **All 97 resium components** (resium 1.26.0 / cesium 1.145.0, with `@cesium/engine` 26.3.0 and `@cesium/widgets` 16.2.0 pinned for reproducible frontend builds), generated from resium's TypeScript definitions with prop docs and types.
 - **`rs.Cesium` bridge**: build real Cesium objects (`Cartesian3`, `Color`, imagery providers, materials, enums…) from Python, including state vars and `rx.foreach` items.
 - **Automatic memoization** of Cesium objects so read-only props don't re-create elements on every render.
 - **JSON-safe events**: Cesium callbacks (`on_click`, `on_load`, `on_tick`, `on_ready`…) arrive in your state as dictionaries.
